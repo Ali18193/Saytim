@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ADDIM — Azərbaycanda əlilliyi olan şəxslər üçün ilk hərtərəfli rəqəmsal əlçatanlıq platforması. Bir addım, hər kəs üçün.">
+<meta name="keywords" content="ADDIM, əlçatanlıq, əlillik, Azərbaycan, rəqəmsal platforma, inklüziv">
+<meta property="og:title" content="ADDIM — Bir addım, hər kəs üçün">
+<meta property="og:description" content="Azərbaycanda əlilliyi olan şəxslər üçün ilk hərtərəfli rəqəmsal əlçatanlıq platforması">
+<meta property="og:type" content="website">
+<title>ADDIM — Bir addım, hər kəs üçün</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #003087;
+    --navy-dark: #001f5c;
+    --navy-light: #e8eef7;
+    --green: #00C853;
+    --green-dark: #009624;
+    --green-muted: #e6faf0;
+    --orange: #FF6B00;
+    --orange-dark: #cc5500;
+    --orange-muted: #fff3e8;
+    --white: #ffffff;
+    --off-white: #f7f9fc;
+    --gray-50: #f4f5f7;
+    --gray-100: #e8eaed;
+    --gray-300: #b0b8c5;
+    --gray-500: #6b7688;
+    --gray-700: #3a4254;
+    --gray-900: #1a1e2a;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-sm: 0 2px 12px rgba(0,48,135,0.08);
+    --shadow-md: 0 8px 32px rgba(0,48,135,0.12);
+    --shadow-lg: 0 20px 60px rgba(0,48,135,0.16);
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 40px;
+  }
+
+  [data-theme="dark"] {
+    --white: #111827;
+    --off-white: #1a2235;
+    --gray-50: #1e2b3f;
+    --gray-100: #263347;
+    --gray-300: #4a5a75;
+    --gray-500: #8494ac;
+    --gray-700: #c4cfe0;
+    --gray-900: #eef2f8;
+    --navy-light: #0d1f45;
+    --green-muted: #0a2215;
+    --orange-muted: #2a1800;
+    --shadow-sm: 0 2px 12px rgba(0,0,0,0.3);
+    --shadow-md: 0 8px 32px rgba(0,0,0,0.4);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--gray-900);
+    overflow-x: hidden;
+    transition: background var(--transition), color var(--transition);
+  }
+
+  /* ===== SCROLLBAR ===== */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--gray-50); }
+  ::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 3px; }
+
+  /* ===== SKIP LINK ===== */
+  .skip-link {
+    position: absolute; top: -50px; left: 20px;
+    background: var(--navy); color: white; padding: 8px 16px;
+    border-radius: var(--radius-sm); text-decoration: none;
+    z-index: 9999; transition: top 0.2s;
+  }
+  .skip-link:focus { top: 20px; }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    transition: all var(--transition);
+    background: transparent;
+  }
+  nav.scrolled {
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--gray-100);
+    box-shadow: var(--shadow-sm);
+  }
+  [data-theme="dark"] nav.scrolled {
+    background: rgba(17,24,39,0.92);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.6rem;
+    color: var(--white); text-decoration: none;
+    letter-spacing: -0.02em;
+    transition: color var(--transition);
+  }
+  nav.scrolled .nav-logo { color: var(--navy); }
+  .nav-logo span { color: var(--green); }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.85); text-decoration: none;
+    font-size: 0.9rem; font-weight: 500; letter-spacing: 0.01em;
+    transition: color var(--transition);
+  }
+  nav.scrolled .nav-links a { color: var(--gray-700); }
+  .nav-links a:hover { color: var(--green) !important; }
+  .nav-cta {
+    background: var(--green);
+    color: white !important;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 600 !important;
+    transition: transform var(--transition), box-shadow var(--transition) !important;
+  }
+  .nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,200,83,0.4) !important;
+    color: white !important;
+  }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .theme-toggle {
+    width: 38px; height: 38px; border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    background: transparent; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all var(--transition); color: white; font-size: 1.1rem;
+  }
+  nav.scrolled .theme-toggle { border-color: var(--gray-300); color: var(--gray-700); }
+  .theme-toggle:hover { background: rgba(255,255,255,0.1); transform: rotate(20deg); }
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px;
+  }
+  .hamburger span {
+    width: 24px; height: 2px; background: white; border-radius: 2px;
+    transition: all var(--transition); display: block;
+  }
+  nav.scrolled .hamburger span { background: var(--gray-900); }
+  .mobile-menu {
+    display: none; position: fixed; top: 72px; left: 0; right: 0;
+    background: var(--white); padding: 2rem 5%;
+    flex-direction: column; gap: 1.5rem;
+    border-bottom: 1px solid var(--gray-100);
+    box-shadow: var(--shadow-md); z-index: 999;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: var(--gray-700); text-decoration: none; font-size: 1.1rem;
+    font-weight: 500; padding: 0.75rem 0;
+    border-bottom: 1px solid var(--gray-100);
+    transition: color var(--transition);
+  }
+  .mobile-menu a:hover { color: var(--navy); }
+
+  /* ===== HERO ===== */
+  #hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, #0052cc 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 5% 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg-shapes {
+    position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  }
+  .hero-shape {
+    position: absolute; border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    animation: floatShape 8s ease-in-out infinite;
+  }
+  .hero-shape:nth-child(1) { width: 600px; height: 600px; top: -200px; right: -150px; animation-delay: 0s; }
+  .hero-shape:nth-child(2) { width: 400px; height: 400px; bottom: -100px; left: -100px; animation-delay: 2s; }
+  .hero-shape:nth-child(3) { width: 200px; height: 200px; top: 30%; left: 10%; animation-delay: 4s; background: rgba(0,200,83,0.08); }
+  .hero-shape:nth-child(4) { width: 150px; height: 150px; top: 20%; right: 15%; animation-delay: 1s; background: rgba(255,107,0,0.08); }
+  @keyframes floatShape {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.03); }
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,200,83,0.15); border: 1px solid rgba(0,200,83,0.3);
+    color: #7fffb5; padding: 8px 20px; border-radius: 50px;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em;
+    margin-bottom: 2rem; animation: fadeInDown 0.8s ease both;
+  }
+  .hero-badge::before { content: '●'; color: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .hero-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 800; color: white; line-height: 1;
+    letter-spacing: -0.03em; margin-bottom: 1rem;
+    animation: fadeInUp 0.8s 0.2s ease both;
+  }
+  .hero-logo span { color: var(--green); position: relative; }
+  .hero-logo span::after {
+    content: ''; position: absolute; bottom: 2px; left: 0; right: 0;
+    height: 4px; background: var(--green); border-radius: 2px;
+    transform: scaleX(0); transform-origin: left;
+    animation: scaleIn 0.6s 1s ease forwards;
+  }
+  @keyframes scaleIn { to { transform: scaleX(1); } }
+  .hero-tagline {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: rgba(255,255,255,0.95); font-weight: 300;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.8s 0.4s ease both;
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255,255,255,0.7); max-width: 640px;
+    line-height: 1.7; margin-bottom: 3rem;
+    animation: fadeInUp 0.8s 0.6s ease both;
+  }
+  .hero-ctas {
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    animation: fadeInUp 0.8s 0.8s ease both;
+  }
+  .btn-primary {
+    padding: 16px 36px; background: var(--green); color: white;
+    border: none; border-radius: 50px; font-size: 1rem; font-weight: 600;
+    cursor: pointer; text-decoration: none; display: inline-flex;
+    align-items: center; gap: 10px;
+    transition: all var(--transition);
+    box-shadow: 0 4px 24px rgba(0,200,83,0.4);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,200,83,0.5); background: var(--green-dark); }
+  .btn-secondary {
+    padding: 16px 36px; background: transparent; color: white;
+    border: 1.5px solid rgba(255,255,255,0.4); border-radius: 50px;
+    font-size: 1rem; font-weight: 500; cursor: pointer;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+    transition: all var(--transition);
+    backdrop-filter: blur(8px);
+  }
+  .btn-secondary:hover { border-color: white; background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    animation: fadeInUp 0.8s 1s ease both;
+    flex-wrap: wrap; justify-content: center;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem; font-weight: 800; color: white; display: block;
+  }
+  .hero-stat-num span { color: var(--green); }
+  .hero-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.5); font-size: 0.8rem; letter-spacing: 0.1em;
+    text-transform: uppercase; animation: fadeInUp 0.8s 1.2s ease both;
+    cursor: pointer;
+  }
+  .scroll-arrow {
+    width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+  @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ===== SECTION COMMONS ===== */
+  section { padding: 100px 5%; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 1.2rem;
+    color: var(--orange);
+  }
+  .section-label::before { content: ''; width: 32px; height: 2px; background: var(--orange); border-radius: 1px; }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800; line-height: 1.15;
+    letter-spacing: -0.02em; color: var(--gray-900);
+    margin-bottom: 1.2rem;
+  }
+  .section-title .accent { color: var(--navy); }
+  .section-title .green { color: var(--green); }
+  .section-subtitle {
+    font-size: 1.1rem; color: var(--gray-500); line-height: 1.7;
+    max-width: 560px;
+  }
+  .text-center { text-align: center; }
+  .text-center .section-subtitle { margin: 0 auto; }
+  .text-center .section-label { justify-content: center; }
+
+  /* ===== PROBLEM SECTION ===== */
+  #problem { background: var(--off-white); }
+  .problem-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+  .problem-card {
+    background: var(--white); border-radius: var(--radius-lg);
+    padding: 2.5rem; border: 1px solid var(--gray-100);
+    box-shadow: var(--shadow-sm); transition: all var(--transition);
+    position: relative; overflow: hidden;
+  }
+  .problem-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 4px; border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  .problem-card:nth-child(1)::before { background: var(--navy); }
+  .problem-card:nth-child(2)::before { background: var(--orange); }
+  .problem-card:nth-child(3)::before { background: var(--green); }
+  .problem-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+  .problem-num {
+    font-family: 'Syne', sans-serif; font-size: 3.5rem; font-weight: 800;
+    color: var(--gray-100); line-height: 1; margin-bottom: 1rem;
+  }
+  .problem-card:nth-child(1) .problem-num { color: rgba(0,48,135,0.1); }
+  .problem-card:nth-child(2) .problem-num { color: rgba(255,107,0,0.1); }
+  .problem-card:nth-child(3) .problem-num { color: rgba(0,200,83,0.1); }
+  .problem-icon {
+    width: 56px; height: 56px; border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 1.5rem;
+  }
+  .problem-card:nth-child(1) .problem-icon { background: var(--navy-light); }
+  .problem-card:nth-child(2) .problem-icon { background: var(--orange-muted); }
+  .problem-card:nth-child(3) .problem-icon { background: var(--green-muted); }
+  .problem-card h3 {
+    font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700;
+    margin-bottom: 0.75rem; color: var(--gray-900);
+  }
+  .problem-card p { color: var(--gray-500); line-height: 1.7; font-size: 0.95rem; }
+
+  /* ===== SOLUTION ===== */
+  #solution {
+    background: linear-gradient(180deg, var(--white) 0%, var(--navy-light) 100%);
+  }
+  [data-theme="dark"] #solution {
+    background: linear-gradient(180deg, var(--white) 0%, var(--gray-50) 100%);
+  }
+  .solution-intro {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: center; margin-bottom: 4rem;
+  }
+  .solution-description {
+    font-size: 1.05rem; color: var(--gray-500); line-height: 1.8;
+    margin-top: 1.5rem;
+  }
+  .solution-visual {
+    background: linear-gradient(135deg, var(--navy), #0052cc);
+    border-radius: var(--radius-lg); padding: 3rem; position: relative;
+    overflow: hidden; min-height: 300px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--shadow-lg);
+  }
+  .solution-visual-text {
+    font-family: 'Syne', sans-serif; font-size: 5rem; font-weight: 800;
+    color: rgba(255,255,255,0.15); text-align: center; letter-spacing: -0.03em;
+    z-index: 0;
+  }
+  .solution-visual-badge {
+    position: absolute; font-family: 'Syne', sans-serif;
+    font-weight: 700; color: white; z-index: 1;
+  }
+  .svb-1 { top: 1.5rem; left: 1.5rem; font-size: 0.9rem; background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2); }
+  .svb-2 { bottom: 1.5rem; right: 1.5rem; font-size: 0.9rem; background: rgba(0,200,83,0.2); padding: 8px 16px; border-radius: 50px; border: 1px solid rgba(0,200,83,0.3); color: #7fffb5; }
+  .modules-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .module-card {
+    background: var(--white); border: 1px solid var(--gray-100);
+    border-radius: var(--radius-lg); padding: 2rem;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-sm); position: relative;
+  }
+  .module-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: var(--navy); }
+  .module-num {
+    font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy);
+    margin-bottom: 1rem;
+  }
+  .module-icon-wrap {
+    width: 52px; height: 52px; border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--navy), #0052cc);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1.25rem;
+    box-shadow: 0 4px 16px rgba(0,48,135,0.25);
+  }
+  .module-card:nth-child(2) .module-icon-wrap { background: linear-gradient(135deg, #009624, var(--green)); box-shadow: 0 4px 16px rgba(0,200,83,0.25); }
+  .module-card:nth-child(3) .module-icon-wrap { background: linear-gradient(135deg, var(--orange-dark), var(--orange)); box-shadow: 0 4px 16px rgba(255,107,0,0.25); }
+  .module-card:nth-child(4) .module-icon-wrap { background: linear-gradient(135deg, #5b21b6, #7c3aed); box-shadow: 0 4px 16px rgba(124,58,237,0.25); }
+  .module-card h3 {
+    font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700;
+    margin-bottom: 0.75rem; color: var(--gray-900);
+  }
+  .module-card p { font-size: 0.9rem; color: var(--gray-500); line-height: 1.7; }
+
+  /* ===== EXPERIENCE ===== */
+  #experience { background: var(--off-white); }
+  .exp-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    margin-top: 3rem;
+  }
+  .exp-block { background: var(--white); border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-sm); }
+  .exp-block h3 {
+    font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700;
+    margin-bottom: 1.5rem; color: var(--gray-900);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .exp-tag {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
+    padding: 4px 12px; border-radius: 50px; text-transform: uppercase;
+  }
+  .tag-global { background: var(--navy-light); color: var(--navy); }
+  .tag-local { background: var(--green-muted); color: var(--green-dark); }
+  .exp-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+  .exp-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 0.95rem; color: var(--gray-500); line-height: 1.6;
+    padding-bottom: 1rem; border-bottom: 1px solid var(--gray-100);
+  }
+  .exp-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .exp-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .dot-navy { background: var(--navy); }
+  .dot-green { background: var(--green); }
+  .dot-orange { background: var(--orange); }
+
+  /* ===== TARGETS ===== */
+  #targets { background: var(--white); }
+  .targets-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    margin-top: 3rem; align-items: start;
+  }
+  .target-groups h3 {
+    font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700;
+    margin-bottom: 1.5rem; color: var(--gray-900);
+  }
+  .target-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--off-white); border: 1px solid var(--gray-100);
+    padding: 10px 18px; border-radius: 50px; margin: 0 6px 10px 0;
+    font-size: 0.9rem; color: var(--gray-700); font-weight: 500;
+    transition: all var(--transition);
+  }
+  .target-pill:hover { background: var(--navy-light); border-color: var(--navy); color: var(--navy); }
+  .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .kpi-card {
+    background: linear-gradient(135deg, var(--navy), #0052cc);
+    border-radius: var(--radius-md); padding: 1.5rem; color: white;
+    transition: all var(--transition);
+  }
+  .kpi-card:nth-child(2) { background: linear-gradient(135deg, #009624, var(--green)); }
+  .kpi-card:nth-child(3) { background: linear-gradient(135deg, var(--orange-dark), var(--orange)); }
+  .kpi-card:nth-child(4) { background: linear-gradient(135deg, #5b21b6, #7c3aed); }
+  .kpi-card:nth-child(5) { background: linear-gradient(135deg, #0e7490, #0891b2); grid-column: span 2; }
+  .kpi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .kpi-num {
+    font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800;
+    color: white; display: block; margin-bottom: 0.3rem;
+  }
+  .kpi-label { font-size: 0.8rem; color: rgba(255,255,255,0.75); line-height: 1.4; }
+
+  /* ===== ROADMAP ===== */
+  #roadmap {
+    background: linear-gradient(180deg, var(--off-white), var(--navy-light));
+  }
+  [data-theme="dark"] #roadmap {
+    background: linear-gradient(180deg, var(--off-white), var(--gray-50));
+  }
+  .timeline {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0; margin-top: 3rem; position: relative;
+  }
+  .timeline::before {
+    content: ''; position: absolute; top: 54px; left: 16.5%; right: 16.5%;
+    height: 2px; background: linear-gradient(90deg, var(--navy), var(--green), var(--orange));
+    z-index: 0;
+  }
+  .phase {
+    background: var(--white); border-radius: var(--radius-lg); padding: 2rem;
+    margin: 0 0.75rem; box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-100); position: relative;
+    transition: all var(--transition);
+  }
+  .phase:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+  .phase-header {
+    display: flex; flex-direction: column; align-items: center;
+    margin-bottom: 1.5rem; text-align: center;
+  }
+  .phase-badge {
+    width: 52px; height: 52px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem;
+    color: white; margin-bottom: 0.75rem; position: relative; z-index: 1;
+  }
+  .phase:nth-child(1) .phase-badge { background: var(--navy); box-shadow: 0 4px 16px rgba(0,48,135,0.4); }
+  .phase:nth-child(2) .phase-badge { background: var(--green-dark); box-shadow: 0 4px 16px rgba(0,200,83,0.4); }
+  .phase:nth-child(3) .phase-badge { background: var(--orange); box-shadow: 0 4px 16px rgba(255,107,0,0.4); }
+  .phase-period {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--gray-500); margin-bottom: 0.4rem;
+  }
+  .phase-title {
+    font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+    color: var(--gray-900); text-align: center;
+  }
+  .phase-items { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .phase-items li {
+    font-size: 0.88rem; color: var(--gray-500); padding-left: 1rem;
+    position: relative; line-height: 1.5;
+  }
+  .phase-items li::before { content: '→'; position: absolute; left: 0; color: var(--gray-300); }
+
+  /* ===== BUDGET ===== */
+  #budget { background: var(--white); }
+  .budget-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; margin-top: 3rem; align-items: start; }
+  .budget-table-wrap { overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm); }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { background: var(--navy); color: white; }
+  thead th { padding: 1rem 1.25rem; text-align: left; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; }
+  tbody tr { border-bottom: 1px solid var(--gray-100); transition: background var(--transition); }
+  tbody tr:hover { background: var(--off-white); }
+  tbody td { padding: 1rem 1.25rem; font-size: 0.9rem; color: var(--gray-700); vertical-align: top; line-height: 1.5; }
+  tbody tr:last-child { background: var(--navy-light); font-weight: 600; }
+  tbody tr:last-child td { color: var(--navy); font-weight: 700; font-family: 'Syne', sans-serif; }
+  .budget-chart { display: flex; flex-direction: column; gap: 1rem; }
+  .budget-chart h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.5rem; }
+  .bar-item { display: flex; flex-direction: column; gap: 6px; }
+  .bar-label { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--gray-500); }
+  .bar-label span:last-child { font-weight: 600; color: var(--gray-900); }
+  .bar-track { height: 10px; background: var(--gray-100); border-radius: 5px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 5px; transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); }
+  .bf-navy { background: linear-gradient(90deg, var(--navy), #0052cc); }
+  .bf-green { background: linear-gradient(90deg, var(--green-dark), var(--green)); }
+  .bf-orange { background: linear-gradient(90deg, var(--orange-dark), var(--orange)); }
+  .bf-teal { background: linear-gradient(90deg, #0e7490, #0891b2); }
+  .bf-purple { background: linear-gradient(90deg, #5b21b6, #7c3aed); }
+  .bf-gray { background: linear-gradient(90deg, #374151, #6b7280); }
+  .total-badge {
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(135deg, var(--navy), #0052cc);
+    border-radius: var(--radius-md); padding: 1.25rem 1.5rem; color: white;
+    margin-top: 1rem;
+  }
+  .total-badge-label { font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+  .total-badge-num { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; }
+
+  /* ===== PROPOSALS ===== */
+  #proposals { background: var(--off-white); }
+  .proposals-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 3rem; }
+  .proposal-item {
+    background: var(--white); border-radius: var(--radius-md);
+    padding: 1.5rem 2rem; border: 1px solid var(--gray-100);
+    display: flex; align-items: flex-start; gap: 1.5rem;
+    box-shadow: var(--shadow-sm); transition: all var(--transition);
+  }
+  .proposal-item:hover { transform: translateX(6px); border-left-color: var(--navy); box-shadow: var(--shadow-md); }
+  .proposal-num {
+    width: 44px; height: 44px; border-radius: 50%; background: var(--navy);
+    color: white; display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .proposal-content h4 { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--gray-900); margin-bottom: 0.3rem; }
+  .proposal-content p { font-size: 0.9rem; color: var(--gray-500); line-height: 1.6; }
+
+  /* ===== SWOT ===== */
+  #swot { background: var(--white); }
+  .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+  .swot-card { border-radius: var(--radius-lg); padding: 2rem; }
+  .swot-card.strengths { background: var(--navy-light); border: 1.5px solid rgba(0,48,135,0.15); }
+  .swot-card.weaknesses { background: var(--orange-muted); border: 1.5px solid rgba(255,107,0,0.15); }
+  .swot-card.opportunities { background: var(--green-muted); border: 1.5px solid rgba(0,200,83,0.15); }
+  .swot-card.threats { background: #fff1f2; border: 1.5px solid rgba(220,38,38,0.1); }
+  [data-theme="dark"] .swot-card.threats { background: #2d1212; }
+  .swot-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem;
+  }
+  .swot-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+  }
+  .strengths .swot-icon { background: rgba(0,48,135,0.1); }
+  .weaknesses .swot-icon { background: rgba(255,107,0,0.1); }
+  .opportunities .swot-icon { background: rgba(0,200,83,0.1); }
+  .threats .swot-icon { background: rgba(220,38,38,0.1); }
+  .swot-label {
+    font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 2px;
+  }
+  .strengths .swot-label { color: var(--navy); }
+  .weaknesses .swot-label { color: var(--orange-dark); }
+  .opportunities .swot-label { color: var(--green-dark); }
+  .threats .swot-label { color: #dc2626; }
+  .swot-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--gray-900); }
+  .swot-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .swot-list li {
+    font-size: 0.88rem; color: var(--gray-500); padding-left: 1.2rem;
+    position: relative; line-height: 1.5;
+  }
+  .strengths .swot-list li::before { content: '✓'; position: absolute; left: 0; color: var(--navy); font-weight: 700; }
+  .weaknesses .swot-list li::before { content: '—'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+  .opportunities .swot-list li::before { content: '↑'; position: absolute; left: 0; color: var(--green-dark); font-weight: 700; }
+  .threats .swot-list li::before { content: '!'; position: absolute; left: 0; color: #dc2626; font-weight: 700; }
+
+  /* ===== CTA FINAL ===== */
+  #cta {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, #0052cc 100%);
+    text-align: center; padding: 120px 5%; position: relative; overflow: hidden;
+  }
+  #cta::before {
+    content: 'ADDIM'; position: absolute; font-family: 'Syne', sans-serif;
+    font-size: 18vw; font-weight: 800; color: rgba(255,255,255,0.03);
+    letter-spacing: -0.03em; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); white-space: nowrap; pointer-events: none;
+  }
+  .cta-quote {
+    font-size: clamp(1.3rem, 3vw, 2rem); color: rgba(255,255,255,0.9);
+    font-style: italic; font-weight: 300; max-width: 700px; margin: 0 auto 1.5rem;
+    line-height: 1.6;
+  }
+  .cta-quote strong { color: var(--green); font-style: normal; font-weight: 700; }
+  .cta-stat {
+    font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800; color: white; margin-bottom: 1rem; line-height: 1;
+  }
+  .cta-stat span { color: var(--green); }
+  .cta-sub { color: rgba(255,255,255,0.65); font-size: 1.05rem; max-width: 500px; margin: 0 auto 3rem; line-height: 1.6; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--gray-900); color: rgba(255,255,255,0.7);
+    padding: 3rem 5%; text-align: center;
+  }
+  [data-theme="dark"] footer { background: #0a0e18; }
+  .footer-logo {
+    font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800;
+    color: white; margin-bottom: 0.5rem; letter-spacing: -0.02em;
+  }
+  .footer-logo span { color: var(--green); }
+  .footer-tagline { font-size: 0.9rem; color: rgba(255,255,255,0.45); margin-bottom: 2rem; }
+  .footer-social {
+    display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem;
+  }
+  .social-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem;
+    padding: 10px 20px; border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50px; transition: all var(--transition);
+  }
+  .social-link:hover { color: white; border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); transform: translateY(-2px); }
+  .social-link .ig-icon { font-size: 1.1rem; }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 1.5rem 0; }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem; font-size: 0.82rem; color: rgba(255,255,255,0.3);
+  }
+
+  /* ===== REVEAL ANIMATIONS ===== */
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .solution-intro { grid-template-columns: 1fr; }
+    .exp-grid { grid-template-columns: 1fr; }
+    .targets-grid { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 1fr; }
+    .timeline::before { display: none; }
+    .phase { margin: 0 0 1rem; }
+    .budget-wrapper { grid-template-columns: 1fr; }
+    .swot-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    section { padding: 70px 5%; }
+  }
+  @media (max-width: 480px) {
+    .kpi-grid { grid-template-columns: 1fr; }
+    .kpi-card:nth-child(5) { grid-column: span 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Əsas məzmuna keç</a>
+
+<!-- NAVBAR -->
+<nav id="navbar" role="navigation" aria-label="Əsas naviqasiya">
+  <a href="#hero" class="nav-logo" aria-label="ADDIM — Ana səhifə">ADDIM<span>.</span></a>
+  <ul class="nav-links" role="list">
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#solution">Həll</a></li>
+    <li><a href="#roadmap">Yol Xəritəsi</a></li>
+    <li><a href="#swot">SWOT</a></li>
+    <li><a href="#cta" class="nav-cta">Qoşul</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Tema dəyiş">🌙</button>
+    <button class="hamburger" id="hamburger" aria-label="Menyu aç" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobil menyu">
+  <a href="#problem" onclick="closeMobileMenu()">Problem nədir?</a>
+  <a href="#solution" onclick="closeMobileMenu()">Həll: ADDIM</a>
+  <a href="#experience" onclick="closeMobileMenu()">Təcrübə</a>
+  <a href="#roadmap" onclick="closeMobileMenu()">Yol Xəritəsi</a>
+  <a href="#budget" onclick="closeMobileMenu()">Büdcə</a>
+  <a href="#swot" onclick="closeMobileMenu()">SWOT</a>
+  <a href="#cta" onclick="closeMobileMenu()">Platformaya qoşul →</a>
+</div>
+
+<!-- HERO -->
+<main id="main">
+<section id="hero" aria-label="Əsas bölmə">
+  <div class="hero-bg-shapes" aria-hidden="true">
+    <div class="hero-shape"></div>
+    <div class="hero-shape"></div>
+    <div class="hero-shape"></div>
+    <div class="hero-shape"></div>
+  </div>
+  <div class="hero-badge" role="status">🇦🇿 Azərbaycanın İlk Rəqəmsal Əlçatanlıq Platforması</div>
+  <h1 class="hero-logo">A<span>D</span>DIM</h1>
+  <p class="hero-tagline">Bir addım, hər kəs üçün</p>
+  <p class="hero-sub">Azərbaycanda əlilliyi olan şəxslər üçün ilk hərtərəfli rəqəmsal əlçatanlıq platforması — müstəqil həyat, bərabər imkanlar, rəqəmsal gələcək.</p>
+  <div class="hero-ctas">
+    <a href="#solution" class="btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+      Platformaya qoşul
+    </a>
+    <a href="#problem" class="btn-secondary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+      Daha çox öyrən
+    </a>
+  </div>
+  <div class="hero-stats" aria-label="Əsas göstəricilər">
+    <div class="hero-stat">
+      <span class="hero-stat-num">600<span>K+</span></span>
+      <span class="hero-stat-label">Potensial İstifadəçi</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">4</span>
+      <span class="hero-stat-label">Əsas Modul</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">18</span>
+      <span class="hero-stat-label">Aylıq Yol Xəritəsi</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">85<span>K</span></span>
+      <span class="hero-stat-label">AZN Büdcə</span>
+    </div>
+  </div>
+  <div class="hero-scroll" onclick="document.getElementById('problem').scrollIntoView({behavior:'smooth'})" role="button" tabindex="0" aria-label="Aşağı diyirlan">
+    <span>Kəşf et</span>
+    <div class="scroll-arrow" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem" aria-labelledby="problem-title">
+  <div class="text-center reveal">
+    <div class="section-label">Problem</div>
+    <h2 class="section-title" id="problem-title">Nə üçün <span class="accent">ADDIM</span> lazımdır?</h2>
+    <p class="section-subtitle">Azərbaycanda 600.000-dən çox vətəndaş üç əsas problemlə üzləşir. Bu problemlər onların müstəqil həyat sürmələrini maneə törədir.</p>
+  </div>
+  <div class="problem-grid">
+    <article class="problem-card reveal reveal-delay-1">
+      <div class="problem-num" aria-hidden="true">01</div>
+      <div class="problem-icon" role="img" aria-label="Məlumat ikonu">📊</div>
+      <h3>Məlumat Yoxluğu</h3>
+      <p>Əlçatan məlumatın kəskin çatışmazlığı mövcuddur. İnklüziv dizayn normlarına uyğun rəqəmsal resurslar demək olar ki, yoxdur. Vətəndaşlar hüquqlarını, xidmətlərini və imkanlarını bilmir.</p>
+    </article>
+    <article class="problem-card reveal reveal-delay-2">
+      <div class="problem-num" aria-hidden="true">02</div>
+      <div class="problem-icon" role="img" aria-label="Fiziki maneə ikonu">🚧</div>
+      <h3>Fiziki Maneələr</h3>
+      <p>İnfrastruktur universal dizayn standartlarına uyğun deyil. Piyada yolları, keçidlər və ictimai nəqliyyat hərəkət məhdudiyyətli şəxslər üçün əlçatan deyil. Şəhər mühiti istisnaedici xarakter daşıyır.</p>
+    </article>
+    <article class="problem-card reveal reveal-delay-3">
+      <div class="problem-num" aria-hidden="true">03</div>
+      <div class="problem-icon" role="img" aria-label="İzolasiya ikonu">🔗</div>
+      <h3>Sosial İzolyasiya</h3>
+      <p>Sosial və bürokratik maneələr, cəmiyyətdə mövcud olan stereotiplər və yanlış yanaşmalar vətəndaşları izolə edir. Bərabər imkanların olmaması dərin sosial bərabərsizliyə yol açır.</p>
+    </article>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution" aria-labelledby="solution-title">
+  <div class="solution-intro">
+    <div>
+      <div class="section-label reveal">Həll</div>
+      <h2 class="section-title reveal reveal-delay-1" id="solution-title">ADDIM <span class="green">nədir?</span></h2>
+      <p class="solution-description reveal reveal-delay-2">ADDIM — əlilliyi olan şəxslərin sosial müdafiəsinin rəqəmsallaşdırılması və "müstəqil həyat" konsepsiyasının tətbiqi üçün nəzərdə tutulmuş çoxfunksiyalı texnoloji həlldir. Süni intellekt, Böyük Verilənlər və real-vaxt texnologiyaları əsasında qurulmuşdur.</p>
+    </div>
+    <div class="solution-visual reveal reveal-delay-2" role="img" aria-label="ADDIM platforması vizualı">
+      <div class="solution-visual-text" aria-hidden="true">ADDIM</div>
+      <div class="svb-1">WCAG 2.1 AA</div>
+      <div class="svb-2">✓ 600K+ İstifadəçi</div>
+    </div>
+  </div>
+  <div class="modules-grid" aria-label="ADDIM modullları">
+    <article class="module-card reveal reveal-delay-1">
+      <div class="module-num">Modul 01</div>
+      <div class="module-icon-wrap" role="img" aria-label="Xəritə ikonu">🗺️</div>
+      <h3>Əlçatanlıq Xəritəsi</h3>
+      <p>Şəhər infrastrukturunun inklüzivlik səviyyəsini Böyük Verilənlər və real vaxt rejimində istifadəçi rəylərini təhlil edən rəqəmsal ekosistem. Hər məkanın əlçatanlıq dərəcəsi anlıq olaraq görünür.</p>
+    </article>
+    <article class="module-card reveal reveal-delay-2">
+      <div class="module-num">Modul 02</div>
+      <div class="module-icon-wrap" role="img" aria-label="Bələdçi ikonu">📋</div>
+      <h3>Xidmət Bələdçisi</h3>
+      <p>Sosial müavinətlər və hüquqi prosedurlar üçün fərdiləşdirilmiş alqoritmik rəhbərlik. Hər vətəndaşa öz vəziyyətinə uyğun addım-addım istiqamət verir.</p>
+    </article>
+    <article class="module-card reveal reveal-delay-3">
+      <div class="module-num">Modul 03</div>
+      <div class="module-icon-wrap" role="img" aria-label="Könüllülük ikonu">🤝</div>
+      <h3>Sosial Könüllülük</h3>
+      <p>Ehtiyac sahibi ilə ən yaxın məsafədəki resursun (könüllünün) intellektual eşləşdirilməsi. İnsan mərkəzli köməklik şəbəkəsi yaradır.</p>
+    </article>
+    <article class="module-card reveal reveal-delay-4">
+      <div class="module-num">Modul 04</div>
+      <div class="module-icon-wrap" role="img" aria-label="İş bazarı ikonu">💼</div>
+      <h3>Əmək Bazarı</h3>
+      <p>Fiziki imkanlara uyğunlaşdırılmış məşğulluq modellərinin və distant iş imkanlarının aqreqasiyası. Hər kəsin potensialına uyğun iş imkanları.</p>
+    </article>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" aria-labelledby="exp-title">
+  <div class="text-center reveal">
+    <div class="section-label">Kontekst</div>
+    <h2 class="section-title" id="exp-title">Xarici və Yerli <span class="accent">Təcrübə</span></h2>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-block reveal reveal-delay-1">
+      <h3>
+        🌍 Xarici Uğur Nümunələri
+        <span class="exp-tag tag-global">Qlobal</span>
+      </h3>
+      <ul class="exp-list">
+        <li>
+          <div class="exp-dot dot-navy"></div>
+          <div><strong>AccessNow (ABŞ)</strong> — real vaxt əlçatanlıq xəritəsi ilə 50.000+ istifadəçiyə çatmış platforma. Crowd-sourced data modeli ADDIM-ə ilham mənbəyidir.</div>
+        </li>
+        <li>
+          <div class="exp-dot dot-green"></div>
+          <div><strong>BE MY EYES (Danimarka)</strong> — görmə qüsurlu şəxslər üçün könüllü şəbəkəsi. 500.000+ aktiv könüllü ilə dünya miqyasında uğur qazanmışdır.</div>
+        </li>
+        <li>
+          <div class="exp-dot dot-orange"></div>
+          <div><strong>Wheelmap (Almaniya)</strong> — OpenStreetMap əsaslı əlil arabalı istifadəçilər üçün global xəritə platforması. 200K+ nöqtə məlumatı mövcuddur.</div>
+        </li>
+      </ul>
+    </div>
+    <div class="exp-block reveal reveal-delay-2">
+      <h3>
+        🇦🇿 Yerli Vəziyyət
+        <span class="exp-tag tag-local">Azərbaycan</span>
+      </h3>
+      <ul class="exp-list">
+        <li>
+          <div class="exp-dot dot-navy"></div>
+          <div><strong>ƏƏSMN</strong> — Əlilliyi olan şəxslərə sosial xidmətlər göstərir, lakin rəqəmsal platforma mövcudiyyəti məhduddur. İnteqrasiya potensialı yüksəkdir.</div>
+        </li>
+        <li>
+          <div class="exp-dot dot-green"></div>
+          <div><strong>Şəffaf Hökumət Portalı</strong> — Məlumat açıqlığı mövcuddur, lakin WCAG standartları tam tətbiq edilməyib. ADDIM bu boşluğu doldurur.</div>
+        </li>
+        <li>
+          <div class="exp-dot dot-orange"></div>
+          <div><strong>Dövlət İmtahan Mərkəzi</strong> — Əlil abituriyentlər üçün şərait yaradılır, lakin proseslər haqqında əvvəlcədən məlumat yetərli deyil.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TARGETS -->
+<section id="targets" aria-labelledby="targets-title">
+  <div class="reveal">
+    <div class="section-label">Hədəf</div>
+    <h2 class="section-title" id="targets-title">Strateji Hədəf Qrupları <br>və <span class="green">Təsir</span></h2>
+  </div>
+  <div class="targets-grid">
+    <div class="target-groups reveal reveal-delay-1">
+      <h3>ADDIM kimə xidmət edir?</h3>
+      <div>
+        <span class="target-pill">🦽 Fiziki-motor məhdudiyyətli fərdlər</span>
+        <span class="target-pill">👁️ Sensor məhdudiyyətli vətəndaşlar</span>
+        <span class="target-pill">👴 Hərəkət çətinliyi yaşayan yaşlı əhali</span>
+        <span class="target-pill">⏱️ Müvəqqəti mobil məhdudiyyətli qruplar</span>
+        <span class="target-pill">👨‍👩‍👧 Ailə üzvləri və qəyyumlar</span>
+        <span class="target-pill">🤲 Könüllülər</span>
+        <span class="target-pill">🏢 Korporativ Tərəfdaşlar</span>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="kpi-grid" aria-label="12 ay ərzində hədəf göstəricilər">
+        <div class="kpi-card">
+          <span class="kpi-num">10K+</span>
+          <span class="kpi-label">Aktiv İstifadəçi<br>Platformanın rəqəmsal qəbulu</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-num">500+</span>
+          <span class="kpi-label">Sertifikatlı Əlçatan Məkan<br>Xəritələşdirmə bazası</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-num">200+</span>
+          <span class="kpi-label">İnteqrasiya Olunmuş Könüllü<br>Sürətli Müdaxilə Şəbəkəsi</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-num">50+</span>
+          <span class="kpi-label">Korporativ Tərəfdaş<br>Özəl sektor əməkdaşlığı</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-num">3</span>
+          <span class="kpi-label">Strateji Dövlət Müqaviləsi — Layihənin dövlət-özəl tərəfdaşlığı modeli</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap" aria-labelledby="roadmap-title">
+  <div class="text-center reveal">
+    <div class="section-label">Yol Xəritəsi</div>
+    <h2 class="section-title" id="roadmap-title">18 Aylıq <span class="accent">Strateji</span> Plan</h2>
+    <p class="section-subtitle">Üç ardıcıl faza üzrə həyata keçirilən kompleks inkişaf strategiyası.</p>
+  </div>
+  <div class="timeline" role="list" aria-label="İcra fazaları">
+    <article class="phase reveal reveal-delay-1" role="listitem">
+      <div class="phase-header">
+        <div class="phase-badge" aria-hidden="true">1</div>
+        <div class="phase-period">Ay 1–6</div>
+        <div class="phase-title">MVP İnkişafı</div>
+      </div>
+      <ul class="phase-items">
+        <li>Sistem arxitekturasının qurulması</li>
+        <li>Pilot layihə — Bakı Metropoliteni</li>
+        <li>İstifadəçi təcrübəsi (UX/UI) dizaynı</li>
+        <li>Beta test mərhələsi</li>
+      </ul>
+    </article>
+    <article class="phase reveal reveal-delay-2" role="listitem">
+      <div class="phase-header">
+        <div class="phase-badge" aria-hidden="true">2</div>
+        <div class="phase-period">Ay 7–12</div>
+        <div class="phase-title">Miqyaslanma və Ekosistem</div>
+      </div>
+      <ul class="phase-items">
+        <li>Marketinq və yayım strategiyası</li>
+        <li>Sosial kapitalın səfərbərliyi</li>
+        <li>Coğrafi məlumat bazasının genişləndirilməsi</li>
+        <li>İnstitusional dialoq prosesi</li>
+      </ul>
+    </article>
+    <article class="phase reveal reveal-delay-3" role="listitem">
+      <div class="phase-header">
+        <div class="phase-badge" aria-hidden="true">3</div>
+        <div class="phase-period">Ay 13–18</div>
+        <div class="phase-title">Milli İnteqrasiya</div>
+      </div>
+      <ul class="phase-items">
+        <li>Xidmətlərin rəqəmsal birliyi</li>
+        <li>İnklüziv iqtisadi modelin aktivasiyası</li>
+        <li>Regional ekspansiya — Naxçıvan +</li>
+        <li>Strateji hesabatlılıq sistemi</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- BUDGET -->
+<section id="budget" aria-labelledby="budget-title">
+  <div class="reveal">
+    <div class="section-label">Maliyyə</div>
+    <h2 class="section-title" id="budget-title">Büdcə <span class="accent">Bölgüsü</span></h2>
+    <p class="section-subtitle">18 aylıq şəffaf xərc planı — hər manat məsuliyyətlə xərclənir.</p>
+  </div>
+  <div class="budget-wrapper">
+    <div class="budget-table-wrap reveal reveal-delay-1">
+      <table aria-label="Büdcə cədvəli">
+        <thead>
+          <tr>
+            <th scope="col">Kateqoriya</th>
+            <th scope="col">Məbləğ (AZN)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Texniki İnkişaf</td><td>45,000</td></tr>
+          <tr><td>Dizayn və UX/UI</td><td>12,000</td></tr>
+          <tr><td>Marketinq və Kommunikasiya</td><td>10,000</td></tr>
+          <tr><td>Sahə Tədqiqatı və Audit</td><td>8,000</td></tr>
+          <tr><td>Əməliyyat Xərcləri</td><td>5,000</td></tr>
+          <tr><td>Monitorinq və Qiymətləndirmə</td><td>5,000</td></tr>
+          <tr><td>CƏMİ</td><td>85,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="budget-chart reveal reveal-delay-2" aria-label="Büdcə diaqramı">
+      <h3>Paylanma Diaqramı</h3>
+      <div class="bar-item">
+        <div class="bar-label"><span>Texniki İnkişaf</span><span>45,000 AZN (53%)</span></div>
+        <div class="bar-track"><div class="bar-fill bf-navy" style="width:53%" role="progressbar" aria-valuenow="53" aria-valuemin="0" aria-valuemax="100" aria-label="Texniki inkişaf 53 faiz"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>Dizayn və UX/UI</span><span>12,000 AZN (14%)</span></div>
+        <div class="bar-track"><div class="bar-fill bf-green" style="width:14%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>Marketinq</span><span>10,000 AZN (12%)</span></div>
+        <div class="bar-track"><div class="bar-fill bf-orange" style="width:12%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>Sahə Tədqiqatı</span><span>8,000 AZN (9%)</span></div>
+        <div class="bar-track"><div class="bar-fill bf-teal" style="width:9%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>Əməliyyat</span><span>5,000 AZN (6%)</span></div>
+        <div class="bar-track"><div class="bar-fill bf-purple" style="width:6%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>Monitorinq</span><span>5,000 AZN (6%)</span></div>
+        <div class="bar-track"><div class="bar-fill bf-gray" style="width:6%"></div></div>
+      </div>
+      <div class="total-badge">
+        <span class="total-badge-label">18 aylıq ümumi büdcə</span>
+        <span class="total-badge-num">85,000 ₼</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPOSALS -->
+<section id="proposals" aria-labelledby="proposals-title">
+  <div class="text-center reveal">
+    <div class="section-label">Tövsiyələr</div>
+    <h2 class="section-title" id="proposals-title">Strateji <span class="green">Təkliflər</span></h2>
+  </div>
+  <div class="proposals-list">
+    <div class="proposal-item reveal reveal-delay-1">
+      <div class="proposal-num" aria-hidden="true">1</div>
+      <div class="proposal-content">
+        <h4>Dövlət-Özəl Tərəfdaşlıq (PPP) Modeli</h4>
+        <p>ƏƏSMN və Bakı Nəqliyyat Agentliyi ilə inteqrasiya — dövlət resursları ilə texnoloji innovasiyanın birləşməsi.</p>
+      </div>
+    </div>
+    <div class="proposal-item reveal reveal-delay-2">
+      <div class="proposal-num" aria-hidden="true">2</div>
+      <div class="proposal-content">
+        <h4>WCAG 2.1 AA Standartları</h4>
+        <p>Ekran oxuyucular, kontrast nisbətləri, klaviatura naviqasiyası — hər istifadəçi üçün tam əlçatanlıq.</p>
+      </div>
+    </div>
+    <div class="proposal-item reveal reveal-delay-3">
+      <div class="proposal-num" aria-hidden="true">3</div>
+      <div class="proposal-content">
+        <h4>Açıq Məlumat (Open Data) Strategiyası</h4>
+        <p>İctimai binaların əlçatanlıq məlumatları API vasitəsilə paylaşılsın — şəffaf, ictimai faydalı ekosistem.</p>
+      </div>
+    </div>
+    <div class="proposal-item reveal reveal-delay-1">
+      <div class="proposal-num" aria-hidden="true">4</div>
+      <div class="proposal-content">
+        <h4>Pilot Layihə</h4>
+        <p>Bakı Metropoliteni + İçərişəhər + 3 dövlət xidməti ofisi — real dünya sınağı ilə başlanğıc.</p>
+      </div>
+    </div>
+    <div class="proposal-item reveal reveal-delay-2">
+      <div class="proposal-num" aria-hidden="true">5</div>
+      <div class="proposal-content">
+        <h4>KSM Çərçivəsində Korporativ Əməkdaşlıq</h4>
+        <p>Korporativ Sosial Məsuliyyət (KSM) çərçivəsində 50+ şirkətlə əməkdaşlıq — biznes üçün dəyər, cəmiyyət üçün fayda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SWOT -->
+<section id="swot" aria-labelledby="swot-title">
+  <div class="text-center reveal">
+    <div class="section-label">Analiz</div>
+    <h2 class="section-title" id="swot-title">SWOT <span class="accent">Analizi</span></h2>
+    <p class="section-subtitle">Platformanın güclü tərəflərini, zəifliklərini, imkanlarını və təhdidlərini obyektiv qiymətləndirməsi.</p>
+  </div>
+  <div class="swot-grid">
+    <div class="swot-card strengths reveal reveal-delay-1">
+      <div class="swot-header">
+        <div class="swot-icon" aria-hidden="true">💪</div>
+        <div>
+          <span class="swot-label">S — Güclü Tərəflər</span>
+          <div class="swot-title">Strengths</div>
+        </div>
+      </div>
+      <ul class="swot-list">
+        <li>Azərbaycanda ilk hərtərəfli rəqəmsal əlçatanlıq platforması</li>
+        <li>Süni intellekt və Big Data inteqrasiyası</li>
+        <li>Dörd modul: Xəritə, Bələdçi, Könüllülük, İş Bazarı</li>
+        <li>Dünya təcrübəsinə əsaslanan arxitektura</li>
+        <li>600.000+ potensial istifadəçi — böyük bazar</li>
+      </ul>
+    </div>
+    <div class="swot-card weaknesses reveal reveal-delay-2">
+      <div class="swot-header">
+        <div class="swot-icon" aria-hidden="true">⚠️</div>
+        <div>
+          <span class="swot-label">W — Zəif Tərəflər</span>
+          <div class="swot-title">Weaknesses</div>
+        </div>
+      </div>
+      <ul class="swot-list">
+        <li>Azərbaycan dili üçün nitq tanıma sisteminin zəifliyi</li>
+        <li>MVP mərhələsi üçün kapital tələbi</li>
+        <li>İnfrastruktur auditinin mürəkkəbliyi</li>
+        <li>Texnofobiya səbəbilə yaşlı istifadəçilərdə adaptasiya çətinliyi</li>
+        <li>İnternet kəsilmələrinə həssaslıq</li>
+      </ul>
+    </div>
+    <div class="swot-card opportunities reveal reveal-delay-3">
+      <div class="swot-header">
+        <div class="swot-icon" aria-hidden="true">🚀</div>
+        <div>
+          <span class="swot-label">O — İmkanlar</span>
+          <div class="swot-title">Opportunities</div>
+        </div>
+      </div>
+      <ul class="swot-list">
+        <li>ƏƏSMN və BNA ilə dövlət-özəl tərəfdaşlığı (PPP)</li>
+        <li>Azərbaycanda rəqəmsallaşma strategiyasının genişləndirilməsi</li>
+        <li>50+ korporativ tərəfdaş və KSM maliyyələşməsi</li>
+        <li>Regional ekspansiya — Naxçıvan və digər şəhərlər</li>
+        <li>Beynəlxalq qrant və EU Accessibility Act uyğunluğu</li>
+      </ul>
+    </div>
+    <div class="swot-card threats reveal reveal-delay-4">
+      <div class="swot-header">
+        <div class="swot-icon" aria-hidden="true">🛡️</div>
+        <div>
+          <span class="swot-label">T — Təhdidlər</span>
+          <div class="swot-title">Threats</div>
+        </div>
+      </div>
+      <ul class="swot-list">
+        <li>Bürokrasiya və dövlət tərəfdaşlığının ləngiməsi</li>
+        <li>Rəqib platformaların meydana çıxması</li>
+        <li>Şəxsi məlumatların qorunması riskləri</li>
+        <li>Maliyyə stabilliyi: qrant və investisiya axtarışı</li>
+        <li>Kiber təhlükəsizlik riskləri</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta" aria-labelledby="cta-title">
+  <p class="cta-quote reveal">"Maneələri keçmişdə buraxaq, gələcəyə bir <strong>ADDIM</strong> qalsın..."</p>
+  <div class="cta-stat reveal reveal-delay-1" id="cta-title">
+    <span aria-hidden="true">600<span>.000+</span></span>
+    <span class="sr-only">600 mindən çox</span>
+  </div>
+  <p class="cta-sub reveal reveal-delay-2">Bu gün Azərbaycanda 600.000-dən çox vətəndaşın tam sosial inteqrasiyası sadəcə bir rəqəmsal həll gözləyir. ADDIM bu statistik rəqəmləri canlı uğur hekayələrinə çevirir.</p>
+  <div class="cta-buttons reveal reveal-delay-3">
+    <a href="https://www.instagram.com/addim_platformasi?utm_source=qr&igsh=MWJ4ZzRiMmVvcDV0dA%3D%3D" target="_blank" rel="noopener noreferrer" class="btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      Platformaya qoşul
+    </a>
+    <a href="#problem" class="btn-secondary">Yenidən oxu ↑</a>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-logo">ADDIM<span>.</span></div>
+  <p class="footer-tagline">Bir addım, hər kəs üçün.</p>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/addim_platformasi?utm_source=qr&igsh=MWJ4ZzRiMmVvcDV0dA%3D%3D" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="ADDIM Instagram səhifəsi">
+      <span class="ig-icon" aria-hidden="true">📸</span>
+      @addim_platformasi
+    </a>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <span>© 2025 ADDIM Platform. Bütün hüquqlar qorunur.</span>
+    <span>Azərbaycan | WCAG 2.1 AA Uyğun</span>
+  </div>
+</footer>
+
+<script>
+  // ===== NAVBAR SCROLL =====
+  const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const current = window.scrollY;
+    if (current > 60) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+    lastScroll = current;
+  }, { passive: true });
+
+  // ===== MOBILE MENU =====
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', e => {
+    if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) closeMobileMenu();
+  });
+
+  // ===== THEME TOGGLE =====
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const savedTheme = localStorage.getItem('addim-theme') || 'light';
+  if (savedTheme === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+    themeToggle.textContent = '☀️';
+  }
+  themeToggle.addEventListener('click', () => {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    themeToggle.textContent = isDark ? '🌙' : '☀️';
+    localStorage.setItem('addim-theme', isDark ? 'light' : 'dark');
+  });
+
+  // ===== SCROLL REVEAL =====
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // ===== KEYBOARD NAV FOR HERO SCROLL =====
+  const heroScroll = document.querySelector('.hero-scroll');
+  heroScroll.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      document.getElementById('problem').scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  // ===== ACTIVE NAV =====
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.removeAttribute('aria-current');
+          if (link.getAttribute('href') === '#' + entry.target.id) {
+            link.setAttribute('aria-current', 'page');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(s => sectionObserver.observe(s));
+</script>
+</body>
+</html>
